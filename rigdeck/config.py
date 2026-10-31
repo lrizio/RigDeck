@@ -14,7 +14,7 @@ from .backends.sim import Simulator
 from .backends.yaesu import MODELS as YAESU_MODELS, YaesuFT710
 
 APP_NAME = "RIG DECK"
-VERSION = "0.3.0"
+VERSION = "0.3.1"
 
 CONFIG_DIR = os.path.join(os.environ.get("APPDATA", os.path.expanduser("~")), "RigDeck")
 CONFIG_PATH = os.path.join(CONFIG_DIR, "config.json")

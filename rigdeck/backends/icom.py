@@ -429,11 +429,11 @@ class IcomCIV(Backend):
                     continue
                 if frm != self.addr:
                     continue
+                if f[4] == 0x27 and len(f) > 6 and f[5] == 0x00:   # streamed scope sweep
+                    self._scope_frame(f)   # checked before the broadcast test: the IC-7610 may address sweeps to 00
+                    continue
                 if to == 0x00:             # transceive broadcast
                     self._handle_unsolicited(f)
-                    continue
-                if f[4] == 0x27 and len(f) > 6 and f[5] == 0x00:   # streamed scope sweep
-                    self._scope_frame(f)
                     continue
                 self._got_reply()
                 c = f[4]

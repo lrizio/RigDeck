@@ -72,8 +72,9 @@ mode `27 14 00 <0 = centre / 1 = fixed>`, ref `27 19 00 <BCD dB×100, 2 bytes> <
 (e.g. `07 50 01` = -7.5 dB). The driver restores `27 11 00` (and `27 10 00` if it
 had to switch the scope on) when it disconnects; restoring was verified.
 
-**IC-7610 (2026-09-30, from Hamlib ic7610.c, not yet seen on the radio):** same `27` commands and
-spans; a sweep is 689 points and levels run 0-200. It has MAIN and SUB scopes: the scope id
+**IC-7610 (2026-09-30, from Hamlib ic7610.c; scope confirmed working on the radio 2026-10-31):**
+sweeps may be addressed to `00` rather than the controller, so `_cmd` checks for `27 00` before the
+broadcast test. Same `27` commands and spans; a sweep is 689 points and levels run 0-200. It has MAIN and SUB scopes: the scope id
 (first payload byte) is 0 for MAIN, 1 for SUB, and only id 0 sweeps are assembled.
 
 ## Icom CI-V (IC-7610 and family)
